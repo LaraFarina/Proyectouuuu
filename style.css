@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #1C1C1C;
+    font-family: Arial, sans-serif;
+    color: #F9F4FF; /* Color de texto */
+}
+
+h1 {
+    font-size: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+p {
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.container {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    flex-wrap: wrap; /* Para permitir que los elementos se envuelvan */
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    margin-right: auto; /* Esto alinea la flecha y el título a la izquierda */
+}
+
+.title h1 {
+    margin: 0;
+}
+
+.arrow-left {
+    height: 40px; /* Ajustar altura de flecha */
+    margin-right: 10px; /* Agregar margen derecho */
+}
+
+.interpretacion {
+    margin: 0;
+    margin-left: 10px; /* Ajustar margen derecho */
+}
+
+.interpretation-text {
+    height: 40px; /* Ajustar altura de flecha */
+    margin-right: 10px; /* Agregar margen derecho */
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column; /* Apilar los botones en columna */
+    align-items: flex-start; /* Alinear los botones a la izquierda */
+    margin-top: 10px; /* Añadir espacio arriba */
+}
+
+.buttons .btn {
+    background-color: gray; /* Cambiar fondo de botones a gris */
+    color: white; /* Cambiar color de texto a blanco */
+    height: 40px; /* Ajustar altura de botones */
+    width: 150px; /* Ajustar el ancho de los botones */
+    margin-right: 10px; /* Agregar margen derecho entre botones */
+    margin-bottom: 10px; /* Agregar margen inferior entre botones */
+}
+
+.container .interpretation-text {
+    height: 40px; /* Ajustar altura de flecha */
+    margin-right: 10px; /* Agregar margen derecho */
+}
