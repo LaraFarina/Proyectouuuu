@@ -40,10 +40,13 @@ body {
     width: 32px; /* Ancho del ícono arrow-left */
     height: 32px; /* Altura del ícono arrow-left */
     margin-right: 10px; /* Agregar margen derecho */
+    margin-top:100px;
+
 }
 
 .interpretacion {
     margin: 0;
+    margin-top:100px;
     margin-left: 5px; /* Ajustar margen izquierdo */
     font-size: 20px; /* Reducir tamaño de fuente */
 }
@@ -51,15 +54,18 @@ body {
 .interpretation-text {
     font-size: 18px; /* Reducir tamaño de fuente */
     margin: 0;
+    margin-top: 32px;
     margin-left: 0px; /* Ajustar margen izquierdo */
 }
 
-.switch.switch1{
-    margin-left:0px;
+.switch.switch1 {
+    margin-left: 0px;
 }
-.switch.switch2{
-    margin-left:5px;
+
+.switch.switch2 {
+    margin-left: 5px;
 }
+
 .switch-container {
     margin-top: 10px;
     display: flex;
@@ -142,11 +148,13 @@ body {
     background-color: #333; /* Color de fondo de la cámara */
     display: none; /* Ocultar inicialmente la cámara */
     border-radius: 12px; /* Borde redondeado */
-    box-shadow: 0px 0px 10px rgba(239, 229, 255, 0.1); /* Sombra con color y opacidad */
+    box-shadow: 0px 0px 25px rgba(239, 229, 255, 0.1); /* Sombra con color y opacidad */
 }
 
 .label-container {
+    position: relative; /* Permitir posicionamiento absoluto de hijos */
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 324px;
@@ -157,9 +165,78 @@ body {
     margin-bottom: 20px;
     overflow-y: auto; /* Habilitar desplazamiento vertical si es necesario */
     border: 1px solid rgba(132, 128, 138, 0.377); /* Borde con color #84808A */
-    box-shadow: 0px 0px 10px rgba(239, 229, 255, 0.1); /* Sombra con color y opacidad */
+    box-shadow: 0px 0px 25px rgba(239, 229, 255, 0.1); /* Sombra con color y opacidad */
 }
 
 .label-container .result-item {
     margin-bottom: 5px; /* Espacio entre resultados */
+}
+
+.altavoz {
+    position: absolute; /* Posicionamiento absoluto */
+    bottom: 18px; /* Margen inferior de 10px */
+    left: 18px; /* Margen izquierdo de 10px */
+    width: 18.75px; /* Ajustar el tamaño del altavoz */
+    height: 18.75px; /* Ajustar el tamaño del altavoz */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-around; /* Espacio uniforme entre los elementos */
+    align-items: center;
+    background-color: #1E1E1E;
+    margin-left:0px;
+    width: 385px; /* Asegurar que ocupe todo el ancho */
+    padding: 20px 0; /* Espaciado interno de la barra de navegación */
+    border: none; /* Sin borde */
+    border-top-left-radius: 24px; /* Borde superior izquierdo cuadrado */
+    border-top-right-radius: 24px; /* Borde superior derecho cuadrado */
+    border-bottom-left-radius: 0px; /* Borde inferior izquierdo redondeado */
+    border-bottom-right-radius: 0px; /* Borde inferior derecho redondeado */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.212); /* Sombra con color y opacidad */
+
+}
+
+.navbar-item {
+    display: flex;
+    flex-direction: column; /* Imagen arriba del texto */
+    align-items: center; /* Centrar horizontalmente */
+    text-align: center;
+    margin: 0 10px; /* Espaciado horizontal entre los elementos */
+}
+
+.navbar-item img {
+    width: 22px; /* Ancho de las imágenes */
+    height: 22px; /* Altura de las imágenes */
+    margin-bottom: 5px; /* Espaciado entre imagen y texto */
+}
+
+.Interprete-text-seleccionado{
+    color: #554BF1; /* Color de texto */
+    margin: 0;
+    font-size: 12px; /* Tamaño de fuente del texto */
+}
+
+.Home-text {
+    margin: 0;
+    font-size: 12px; /* Tamaño de fuente del texto */
+    color: #F9F4FF; /* Color de texto */
+}
+
+.Enseñanza-text {
+    margin: 0;
+    font-size: 12px; /* Tamaño de fuente del texto */
+    color: #F9F4FF; /* Color de texto */
+}
+
+.Emergencia-text {
+    margin: 0;
+    font-size: 12px; /* Tamaño de fuente del texto */
+    color: #F9F4FF; /* Color de texto */
+}
+
+.Perfil-text {
+    margin: 0;
+    font-size: 12px; /* Tamaño de fuente del texto */
+    color: #F9F4FF; /* Color de texto */
 }
