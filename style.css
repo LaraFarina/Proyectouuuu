@@ -15,17 +15,17 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: center; /* Centrar contenido verticalmente */
     padding: 10px;
 }
 
 .header {
     width: 100%;
+    margin-left: 50px;
     display: flex;
     flex-direction: column;
     align-items: flex-start; /* Alinear al inicio */
     justify-content: center;
-    margin-left:50px;
     margin-bottom: 20px;
 }
 
@@ -37,20 +37,52 @@ body {
 }
 
 .arrow-left {
-    height: 30px; /* Reducir altura de la flecha */
+    width: 32px; /* Ancho del ícono arrow-left */
+    height: 32px; /* Altura del ícono arrow-left */
     margin-right: 10px; /* Agregar margen derecho */
 }
 
 .interpretacion {
     margin: 0;
     margin-left: 5px; /* Ajustar margen izquierdo */
-    font-size: 18px; /* Reducir tamaño de fuente */
+    font-size: 20px; /* Reducir tamaño de fuente */
 }
 
 .interpretation-text {
-    font-size: 12px; /* Reducir tamaño de fuente */
+    font-size: 18px; /* Reducir tamaño de fuente */
     margin: 0;
-    margin-left: 10px; /* Ajustar margen izquierdo */
+    margin-left: 0px; /* Ajustar margen izquierdo */
+}
+
+.switch-container {
+    margin-top: 10px;
+    display: flex;
+    align-items: center; /* Alinear elementos verticalmente */
+    margin-bottom: 10px; /* Espacio entre los switches y el contenido siguiente */
+}
+
+.switch {
+    width: 149px; /* Ancho del switch */
+    height: 39px; /* Altura del switch */
+    background-color: #383838; /* Color de fondo del switch */
+    text-align: center;
+    display: flex; /* Hacer que el contenido esté centrado vertical y horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    justify-content: center; /* Centrar horizontalmente */
+    margin-left: 5px; /* Margen entre los switches */
+    margin-right: 5px;
+    border-radius: 5px; /* Borde redondeado */
+}
+
+.switch-label {
+    margin: 0;
+    font-size: 14px; /* Tamaño de fuente */
+    color: white; /* Color de texto */
+}
+
+.flecha {
+    height: 20px; /* Ajustar la altura igual a la imagen original de la flecha */
+    cursor: pointer;
 }
 
 .buttons {
@@ -73,50 +105,53 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 300px;
+    width: 324px;
     max-width: 600px; /* Ajustar tamaño máximo del área de inicio */
-    height: 200px; /* Ajustar altura del área de inicio */
+    height: 185px; /* Ajustar altura del área de inicio */
     background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
     border-radius: 10px; /* Borde redondeado */
     margin-bottom: 20px;
+    box-shadow: 0px 0px 10px rgba(239, 229, 255, 0.1); /* Sombra con color y opacidad */
 }
 
-.start-area button {
+.start-button {
     font-size: 16px; /* Tamaño de fuente del botón */
-    width: 300px; /* Ancho del botón */
+    margin-top: 136px;
+    width: 324px; /* Ancho del botón */
     padding: 10px 20px; /* Espaciado interno del botón */
-    margin-top: 162px; /* Ajuste de margen superior */
-    background-color: #554BF1; /* Color de fondo del botón Start */
+    background-color: #1C1C1C; /* Color de fondo del botón Start */
     color: white; /* Color de texto del botón */
     border: none; /* Sin borde */
     border-top-left-radius: 0; /* Borde superior izquierdo cuadrado */
     border-top-right-radius: 0; /* Borde superior derecho cuadrado */
-    border-bottom-left-radius: 5px; /* Borde inferior izquierdo redondeado */
-    border-bottom-right-radius: 5px; /* Borde inferior derecho redondeado */
+    border-bottom-left-radius: 10px; /* Borde inferior izquierdo redondeado */
+    border-bottom-right-radius: 10px; /* Borde inferior derecho redondeado */
     cursor: pointer;
 }
 
 .webcam-container {
     width: 100%;
-    max-width: 300px; /* Ajustar tamaño máximo de la cámara */
-    height: 200px; /* Ajustar altura de la cámara */
+    max-width: 324px; /* Ajustar tamaño máximo de la cámara */
+    height: 185px; /* Ajustar altura de la cámara */
     background-color: #333; /* Color de fondo de la cámara */
     display: none; /* Ocultar inicialmente la cámara */
     border-radius: 10px; /* Borde redondeado */
+    box-shadow: 0px 0px 10px rgba(239, 229, 255, 0.1); /* Sombra con color y opacidad */
 }
 
 .label-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 300px;
+    width: 324px;
     max-width: 600px; /* Ajustar tamaño máximo del área de inicio */
-    height: 200px; /* Ajustar altura del área de inicio */
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    height: 185px; /* Ajustar altura del área de inicio */
+    background-color: #363636; /* Fondo semitransparente */
     border-radius: 10px; /* Borde redondeado */
     margin-bottom: 20px;
     overflow-y: auto; /* Habilitar desplazamiento vertical si es necesario */
     border: 1px solid rgba(132, 128, 138, 0.377); /* Borde con color #84808A */
+    box-shadow: 0px 0px 10px rgba(239, 229, 255, 0.1); /* Sombra con color y opacidad */
 }
 
 .label-container .result-item {
