@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interpretación</title>
-    <link href="./style.css" rel="stylesheet" type="text/css" />
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <div class="header">
             <div class="title">
                 <img src="arrow-left.png" alt="atras" class="arrow-left">
-                <h1 class="interpretacion" id="interpretacion">Interpretación</h1>
+                <h1 class="interpretacion">Interpretación</h1>
             </div>
             <p class="interpretation-text">Formato de interpretación</p>
             <div class="switch-container">
@@ -19,7 +22,6 @@
                     <h1 class="switch-label">Señas</h1>
                 </div>
                 <img src="flechaaas.png" alt="Flechas" class="flecha" onclick="swapText()">
-
                 <div class="switch switch2">
                     <h1 class="switch-label">Voz y texto</h1>
                 </div>
@@ -31,7 +33,6 @@
                     </button>
                 </div>
                 <div id="webcam-container" class="webcam-container"></div>
-                
             </div>
             <div id="label-container" class="label-container"></div>
         </div>
@@ -93,11 +94,12 @@
         }
 
         function swapText() {
-            const seña = document.getElementById("seña");
-            const vozTexto = document.getElementById("voz_texto");
-            const temp = seña.innerHTML;
-            seña.innerHTML = vozTexto.innerHTML;
-            vozTexto.innerHTML = temp;
+            // Asumiendo que seña y voz_texto son IDs de elementos existentes
+            const seña = document.querySelector('.switch-label:nth-of-type(1)');
+            const vozTexto = document.querySelector('.switch-label:nth-of-type(2)');
+            const temp = seña.textContent;
+            seña.textContent = vozTexto.textContent;
+            vozTexto.textContent = temp;
         }
     </script>
 </body>

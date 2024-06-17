@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #1C1C1C;
-    font-family: Arial, sans-serif;
+    font-family: "Readex Pro", sans-serif;
     color: #F9F4FF; /* Color de texto */
     overflow-x: hidden; /* Evitar desplazamiento horizontal */
 }
@@ -54,6 +54,12 @@ body {
     margin-left: 0px; /* Ajustar margen izquierdo */
 }
 
+.switch.switch1{
+    margin-left:0px;
+}
+.switch.switch2{
+    margin-left:5px;
+}
 .switch-container {
     margin-top: 10px;
     display: flex;
@@ -69,9 +75,8 @@ body {
     display: flex; /* Hacer que el contenido esté centrado vertical y horizontalmente */
     align-items: center; /* Centrar verticalmente */
     justify-content: center; /* Centrar horizontalmente */
-    margin-left: 5px; /* Margen entre los switches */
     margin-right: 5px;
-    border-radius: 5px; /* Borde redondeado */
+    border-radius: 12px; /* Borde redondeado */
 }
 
 .switch-label {
@@ -81,7 +86,8 @@ body {
 }
 
 .flecha {
-    height: 20px; /* Ajustar la altura igual a la imagen original de la flecha */
+    width: 16px; /* Ancho de la flecha */
+    height: 16px; /* Altura de la flecha */
     cursor: pointer;
 }
 
@@ -109,7 +115,7 @@ body {
     max-width: 600px; /* Ajustar tamaño máximo del área de inicio */
     height: 185px; /* Ajustar altura del área de inicio */
     background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
-    border-radius: 10px; /* Borde redondeado */
+    border-radius: 12px; /* Borde redondeado */
     margin-bottom: 20px;
     box-shadow: 0px 0px 10px rgba(239, 229, 255, 0.1); /* Sombra con color y opacidad */
 }
@@ -124,8 +130,8 @@ body {
     border: none; /* Sin borde */
     border-top-left-radius: 0; /* Borde superior izquierdo cuadrado */
     border-top-right-radius: 0; /* Borde superior derecho cuadrado */
-    border-bottom-left-radius: 10px; /* Borde inferior izquierdo redondeado */
-    border-bottom-right-radius: 10px; /* Borde inferior derecho redondeado */
+    border-bottom-left-radius: 12px; /* Borde inferior izquierdo redondeado */
+    border-bottom-right-radius: 12px; /* Borde inferior derecho redondeado */
     cursor: pointer;
 }
 
@@ -135,7 +141,7 @@ body {
     height: 185px; /* Ajustar altura de la cámara */
     background-color: #333; /* Color de fondo de la cámara */
     display: none; /* Ocultar inicialmente la cámara */
-    border-radius: 10px; /* Borde redondeado */
+    border-radius: 12px; /* Borde redondeado */
     box-shadow: 0px 0px 10px rgba(239, 229, 255, 0.1); /* Sombra con color y opacidad */
 }
 
@@ -147,7 +153,7 @@ body {
     max-width: 600px; /* Ajustar tamaño máximo del área de inicio */
     height: 185px; /* Ajustar altura del área de inicio */
     background-color: #363636; /* Fondo semitransparente */
-    border-radius: 10px; /* Borde redondeado */
+    border-radius: 12px; /* Borde redondeado */
     margin-bottom: 20px;
     overflow-y: auto; /* Habilitar desplazamiento vertical si es necesario */
     border: 1px solid rgba(132, 128, 138, 0.377); /* Borde con color #84808A */
