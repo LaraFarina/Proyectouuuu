@@ -40,13 +40,12 @@ body {
     width: 32px; /* Ancho del ícono arrow-left */
     height: 32px; /* Altura del ícono arrow-left */
     margin-right: 10px; /* Agregar margen derecho */
-    margin-top:100px;
-
+    margin-top: 100px;
 }
 
 .interpretacion {
     margin: 0;
-    margin-top:100px;
+    margin-top: 100px;
     margin-left: 5px; /* Ajustar margen izquierdo */
     font-size: 20px; /* Reducir tamaño de fuente */
 }
@@ -146,8 +145,10 @@ body {
     max-width: 324px; /* Ajustar tamaño máximo de la cámara */
     height: 185px; /* Ajustar altura de la cámara */
     background-color: #333; /* Color de fondo de la cámara */
+    overflow: hidden;
     display: none; /* Ocultar inicialmente la cámara */
     border-radius: 12px; /* Borde redondeado */
+    margin-bottom: 20px;
     box-shadow: 0px 0px 25px rgba(239, 229, 255, 0.1); /* Sombra con color y opacidad */
 }
 
@@ -178,6 +179,34 @@ body {
     left: 18px; /* Margen izquierdo de 10px */
     width: 18.75px; /* Ajustar el tamaño del altavoz */
     height: 18.75px; /* Ajustar el tamaño del altavoz */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el altavoz */
+}
+
+.union-button {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width:18.75px;
+    height:18.75px;
+}
+
+.borrar-button {
+    position: absolute;
+    bottom: 18px;
+    right: 18px;
+    background: none;
+    width:18.75px;
+    height:18.75px;
+    border: none;
+    cursor: pointer;
+}
+
+.button-img {
+    width: 24px;
+    height: 24px;
 }
 
 .navbar {
@@ -185,7 +214,7 @@ body {
     justify-content: space-around; /* Espacio uniforme entre los elementos */
     align-items: center;
     background-color: #1E1E1E;
-    margin-left:0px;
+    margin-left: 0px;
     width: 385px; /* Asegurar que ocupe todo el ancho */
     padding: 20px 0; /* Espaciado interno de la barra de navegación */
     border: none; /* Sin borde */
@@ -194,7 +223,6 @@ body {
     border-bottom-left-radius: 0px; /* Borde inferior izquierdo redondeado */
     border-bottom-right-radius: 0px; /* Borde inferior derecho redondeado */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.212); /* Sombra con color y opacidad */
-
 }
 
 .navbar-item {
@@ -211,7 +239,7 @@ body {
     margin-bottom: 5px; /* Espaciado entre imagen y texto */
 }
 
-.Interprete-text-seleccionado{
+.Interprete-text-seleccionado {
     color: #554BF1; /* Color de texto */
     margin: 0;
     font-size: 12px; /* Tamaño de fuente del texto */
@@ -239,4 +267,26 @@ body {
     margin: 0;
     font-size: 12px; /* Tamaño de fuente del texto */
     color: #F9F4FF; /* Color de texto */
+}
+
+.result-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 324px;
+    max-width: 600px;
+    height: 50px; /* Altura del contenedor de texto concatenado */
+    background-color: #2c2c2c; /* Color de fondo del contenedor */
+    border-radius: 12px;
+    margin-top: 10px;
+    box-shadow: 0px 0px 25px rgba(239, 229, 255, 0.1); /* Sombra con color y opacidad */
+}
+
+#concatenated-text {
+    color: #F9F4FF; /* Color del texto */
+    font-size: 18px; /* Tamaño de la fuente */
+    position: absolute; /* Posicionamiento absoluto */
+    top: 18px; /* Margen inferior de 10px */
+    left: 18px; /* Margen izquierdo de 10px */
+
 }

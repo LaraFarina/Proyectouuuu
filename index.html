@@ -9,11 +9,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body onload="loadFromCookies()">
     <img src="Notificatiion bar.png" alt="Arriba" class="Arriba">
 
     <div class="container">
-
         <div class="header">
             <div class="title">
                 <img src="arrow-left.png" alt="atras" class="arrow-left">
@@ -38,8 +37,18 @@
                 <div id="webcam-container" class="webcam-container"></div>
             </div>
             <div id="label-container" class="label-container">
-                <img src="Altavoz.png" alt="Altavoz" class="altavoz">
+                <div id="concatenated-text"></div>
+                <img src="Altavoz.png" alt="Altavoz" class="altavoz" onclick="speakText()">
+                <button class="union-button" onclick="removeLastPrediction()">
+                    <img src="Union.png" alt="Union" class="button-img">
+                </button>
+                <button class="borrar-button" onclick="clearAllPredictions()">
+                    <img src="Borrar.png" alt="Borrar" class="button-img">
+                </button>
             </div>
+          <!-- <div id="result-display" class="result-display">
+                <p id="result-display"></p>
+            </div> -->
         </div>
     </div>
 
@@ -70,7 +79,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
     <script type="text/javascript">
         let model, webcam, maxPredictions;
-        const threshold = 0.7; // Umbral de probabilidad para mostrar resultados
+        const threshold = 0.85; // Umbral de probabilidad para mostrar resultados
+        const detectedLetters = new Set(); // Usar un Set para evitar duplicados
 
         async function init() {
             const modelURL = "./modelo/model.json";
@@ -80,13 +90,14 @@
             maxPredictions = model.getTotalClasses();
 
             const flip = true;
-            webcam = new tmImage.Webcam(200, 200, flip);
+            webcam = new tmImage.Webcam(324, 185, flip); // Ajustar tamaño de la cámara
             await webcam.setup();
             await webcam.play();
             window.requestAnimationFrame(loop);
 
             document.getElementById("start-area").style.display = "none";
             document.getElementById("webcam-container").appendChild(webcam.canvas);
+            document.querySelector('.webcam-container').style.display = 'block'; // Mostrar la cámara
         }
 
         async function loop() {
@@ -97,37 +108,88 @@
 
         async function predict() {
             const prediction = await model.predict(webcam.canvas);
-
-            const labelContainer = document.getElementById("label-container");
-            labelContainer.innerHTML = ''; // Limpiar resultados anteriores
+            let highestPrediction = { className: '', probability: 0 };
 
             for (let i = 0; i < maxPredictions; i++) {
-                const className = prediction[i].className;
-                const probability = prediction[i].probability.toFixed(2);
-
-                if (probability > threshold) {
-                    const resultString = `${className}: ${probability}`;
-                    displayResult(resultString);
+                if (prediction[i].probability > highestPrediction.probability) {
+                    highestPrediction = prediction[i];
                 }
+            }
+
+            const className = highestPrediction.className;
+            const probability = highestPrediction.probability.toFixed(2);
+
+            const resultString = `${className}: ${probability}`;
+            // displayResult(resultString);
+
+            if (highestPrediction.probability >= threshold && !detectedLetters.has(className)) {
+                detectedLetters.add(className);
+                addToConcatenatedText(className);
             }
         }
 
-        function displayResult(resultString) {
-            const resultDiv = document.createElement('div');
-            resultDiv.textContent = resultString;
-            resultDiv.className = 'result-item';
+        // function displayResult(resultString) {
+        //     const resultDisplay = document.getElementById("result-display");
+        //     resultDisplay.innerHTML = ''; // Limpiar resultados anteriores
 
-            const labelContainer = document.getElementById("label-container");
-            labelContainer.appendChild(resultDiv);
+        //     const resultDiv = document.createElement('div');
+        //     resultDiv.textContent = resultString;
+        //     resultDiv.className = 'result-item';
+
+        //     resultDisplay.appendChild(resultDiv);
+        // }
+
+        function addToConcatenatedText(letter) {
+            const concatenatedText = document.getElementById("concatenated-text");
+            concatenatedText.textContent += (" " +  letter);
+            saveToCookies();
+        }
+
+        function removeLastPrediction() {
+            const concatenatedText = document.getElementById("concatenated-text");
+            const currentText = concatenatedText.textContent;
+            if (currentText.length > 0) {
+                const lastLetter = currentText[currentText.length - 1];
+                detectedLetters.delete(lastLetter);
+                concatenatedText.textContent = currentText.slice(0, -1);
+                saveToCookies();
+            }
+        }
+
+        function clearAllPredictions() {
+            detectedLetters.clear();
+            document.getElementById("concatenated-text").textContent = '';
+            saveToCookies();
+        }
+
+        function speakText() {
+            const concatenatedText = document.getElementById("concatenated-text").textContent;
+            const utterance = new SpeechSynthesisUtterance(concatenatedText);
+            utterance.lang = 'es-ES'; // Establece el idioma a español
+            window.speechSynthesis.speak(utterance);
         }
 
         function swapText() {
-            // Asumiendo que seña y voz_texto son IDs de elementos existentes
             const seña = document.querySelector('.switch-label:nth-of-type(1)');
             const vozTexto = document.querySelector('.switch-label:nth-of-type(2)');
             const temp = seña.textContent;
             seña.textContent = vozTexto.textContent;
             vozTexto.textContent = temp;
+        }
+
+        function saveToCookies() {
+            const concatenatedText = document.getElementById("concatenated-text").textContent;
+            document.cookie = `concatenatedText=${concatenatedText}; path=/; max-age=31536000;`;
+        }
+
+        function loadFromCookies() {
+            const cookieArr = document.cookie.split(';');
+            for (let i = 0; i < cookieArr.length; i++) {
+                const cookiePair = cookieArr[i].split('=');
+                if (cookiePair[0].trim() === 'concatenatedText') {
+                    document.getElementById("concatenated-text").textContent = cookiePair[1];
+                }
+            }
         }
     </script>
 </body>
