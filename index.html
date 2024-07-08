@@ -46,9 +46,6 @@
                     <img src="Borrar.png" alt="Borrar" class="button-img">
                 </button>
             </div>
-          <!-- <div id="result-display" class="result-display">
-                <p id="result-display"></p>
-            </div> -->
         </div>
     </div>
 
@@ -79,8 +76,18 @@
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
     <script type="text/javascript">
         let model, webcam, maxPredictions;
-        const threshold = 0.85; // Umbral de probabilidad para mostrar resultados
+        const threshold = 0.85; // Umbral de probabilidad por defecto
         const detectedLetters = new Set(); // Usar un Set para evitar duplicados
+
+        // Definir umbrales específicos para cada clase
+        const classThresholds = {
+            'Yo': 0.95,
+            'O': 0.95,
+            'I': 0.30,
+            'Como':0.95,
+            'L':0.30,
+            'T':0.50,
+        };
 
         async function init() {
             const modelURL = "./modelo/model.json";
@@ -98,11 +105,17 @@
             document.getElementById("start-area").style.display = "none";
             document.getElementById("webcam-container").appendChild(webcam.canvas);
             document.querySelector('.webcam-container').style.display = 'block'; // Mostrar la cámara
+
+            // Iniciar el temporizador de predicción
+            setInterval(() => {
+                document.getElementById("webcam-container").classList.remove('border-green');
+                document.getElementById("webcam-container").classList.add('border-red');
+                predict();
+            }, 1000); // Ejecutar la predicción cada 1.5 segundos
         }
 
         async function loop() {
             webcam.update();
-            await predict();
             window.requestAnimationFrame(loop);
         }
 
@@ -119,25 +132,18 @@
             const className = highestPrediction.className;
             const probability = highestPrediction.probability.toFixed(2);
 
-            const resultString = `${className}: ${probability}`;
-            // displayResult(resultString);
+            // Obtener umbral específico para la clase, o usar el umbral por defecto
+            const classThreshold = classThresholds[className] || threshold;
 
-            if (highestPrediction.probability >= threshold && !detectedLetters.has(className)) {
+            if (highestPrediction.probability >= classThreshold && !detectedLetters.has(className)) {
                 detectedLetters.add(className);
                 addToConcatenatedText(className);
             }
+
+            // Cambiar borde a verde después de la predicción
+            document.getElementById("webcam-container").classList.remove('border-red');
+            document.getElementById("webcam-container").classList.add('border-green');
         }
-
-        // function displayResult(resultString) {
-        //     const resultDisplay = document.getElementById("result-display");
-        //     resultDisplay.innerHTML = ''; // Limpiar resultados anteriores
-
-        //     const resultDiv = document.createElement('div');
-        //     resultDiv.textContent = resultString;
-        //     resultDiv.className = 'result-item';
-
-        //     resultDisplay.appendChild(resultDiv);
-        // }
 
         function addToConcatenatedText(letter) {
             const concatenatedText = document.getElementById("concatenated-text");
